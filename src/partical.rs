@@ -1,8 +1,5 @@
 use macroquad::{math::{vec2, Vec2}, prelude::rand, window::{screen_height, screen_width}};
-
-const MASS_MODIFIER:f32 = 2.0;
-const GRAVITY:f32 = 1.0;
-const CHARGE:f32 = -1.0;
+use crate::consts::*;
 
 pub struct Partical {
   pub pos:Vec2, // current pos

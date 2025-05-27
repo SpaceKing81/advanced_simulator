@@ -1,11 +1,28 @@
 use macroquad::prelude::*;
-use partical::Partical;
 use universe::Universe;
 // use std::collections::{HashMap, HashSet};
+/*
+IDEA: EVERYTHING ONLY OPERATES ON COLLITIONS!!!!
+2 TYPES OF PARTICALS, FORCE MEDIATORS AND PHYSICAL
+THUS, PARTICALS ONLY CHECK TO SEE IF THERE ARE ANY AJACENT PARTICALS. ONLY NEED 1 FOR LOOP,
+AND THEN CAN UPDATE ALL FORCE CARRIERS AFTER
 
+loop structure:
+    - Update all particles loop, release 8 force carriers in the 8 directions
+    - Update all force carriers, y=e^(-x) decay, round 0.05 strength to 0
+        - Force Carriers act as waves, and sit within a matrix-field built of a hashmap
+        - Only need to update age, check if the age is too old for killing
+        - Math the strength when read by another partical
+        - If read, they become absorbed by the partical, bestowing the encoded momentum as well
+    - All particals stored in a matrix, cannot occupy same spot
+    - All FC's stored in a hashmap individual to their force, can occupy the same position
+
+*/
 
 mod partical;
 mod universe;
+mod carrier;
+mod consts;
 fn window_conf() -> Conf {
     Conf {
         window_title: "Brain Simulation".to_owned(),
